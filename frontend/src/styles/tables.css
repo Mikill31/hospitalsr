@@ -1,0 +1,80 @@
+/* ============================================
+   TABLES
+   ============================================ */
+.table-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  margin-bottom: 20px; flex-wrap: wrap; animation: fadeInUp 0.4s ease-out;
+}
+.table-toolbar-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.search-box {
+  position: relative; flex: 1; max-width: 360px;
+}
+.search-box i {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 18px; height: 18px; color: var(--text-muted); pointer-events: none;
+}
+.search-box input {
+  width: 100%; padding: 10px 16px 10px 42px; background: var(--bg-card);
+  border: 1px solid var(--border-color); border-radius: var(--radius-md);
+  color: var(--text-primary); font-size: 0.88rem; transition: all var(--transition-fast);
+}
+.search-box input::placeholder { color: var(--text-muted); }
+.search-box input:focus { border-color: var(--primary-500); box-shadow: 0 0 0 3px rgba(6,182,212,0.08); }
+
+.filter-select {
+  padding: 10px 36px 10px 14px; background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); color: var(--text-secondary); font-size: 0.85rem;
+  appearance: none; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  transition: all var(--transition-fast);
+}
+.filter-select:focus { border-color: var(--primary-500); }
+.filter-select option { background: var(--bg-card); color: var(--text-primary); }
+
+.table-container {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg); overflow: hidden;
+  animation: fadeInUp 0.5s ease-out 0.1s backwards;
+}
+
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table thead { background: var(--bg-surface); }
+.data-table th {
+  padding: 14px 18px; text-align: left; font-size: 0.75rem; font-weight: 700;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em;
+  border-bottom: 1px solid var(--border-color);
+}
+.data-table td {
+  padding: 14px 18px; font-size: 0.88rem; color: var(--text-secondary);
+  border-bottom: 1px solid var(--border-color); vertical-align: middle;
+}
+.data-table tbody tr { transition: background var(--transition-fast); }
+.data-table tbody tr:hover { background: rgba(148,163,184,0.03); }
+.data-table tbody tr:last-child td { border-bottom: none; }
+
+.table-id { font-weight: 700; color: var(--text-muted); font-size: 0.82rem; }
+.table-name { font-weight: 600; color: var(--text-primary); }
+.table-actions { display: flex; gap: 6px; }
+
+.status-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+  border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: capitalize;
+}
+.status-badge::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+}
+.status-badge.active { background: var(--success-bg); color: var(--success); }
+.status-badge.active::before { background: var(--success); }
+.status-badge.inactive { background: var(--danger-bg); color: var(--danger); }
+.status-badge.inactive::before { background: var(--danger); }
+.status-badge.maintenance { background: var(--warning-bg); color: var(--warning); }
+.status-badge.maintenance::before { background: var(--warning); }
+
+@media (max-width: 768px) {
+  .table-toolbar { flex-direction: column; align-items: stretch; }
+  .table-toolbar-left { flex-direction: column; }
+  .search-box { max-width: 100%; }
+  .data-table { font-size: 0.82rem; }
+  .data-table th, .data-table td { padding: 10px 12px; }
+}
